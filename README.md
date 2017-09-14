@@ -65,7 +65,12 @@ const config = {
     ]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin(), //webpack提供的压缩代码的工具，或者如下使用
+    //new webpack.optimize.UglifyJsPlugin({
+    //  compress: {
+    //    warnings: false
+    //  }
+    //}),
     new HtmlWebpackPlugin({template: './src/index.html'})
   ]
 };
