@@ -1,4 +1,6 @@
 ## gulp 介绍
+gulp是基于Nodejs的自动任务运行器， 她能自动化地完成 javascript、coffee、sass、less、html/image、css 等文件的测试、检查、合并、压缩、格式化、浏览器自动刷新、部署文件生成，并监听文件在改动后重复指定的这些步骤。在实现上，她借鉴了Unix操作系统的管道（pipe）思想，前一级的输出，直接变成后一级的输入，使得在操作上非常简单。
+### gulp.src
 ```
 gulp.src(globs[, options]);
 ```
@@ -81,6 +83,25 @@ gulp.src('script/jquery.js')　       // 获取流
 
 文件路径与我们给_gulp.dest()_方法传入的路径参数之间的关系:_gulp.dest(path)_生成的文件路径是我们传入的_path_参数后面再加上_gulp.src()_中有通配符开始出现的那部分路径（在不设置src中options.base的情况下）。
 
+### gulp.task 定义任务
+```
+gulp.task(name [, deps] [, fn])
+```
+name： 类型： String 任务名称  
+deps： 类型： Array 在该任务开始执行之前需要执行的任务列表。
+fn：回调函数，任务的主要操作在这里完成，deps执行完成以后执行的函数，确保在deps（dependency tasks）任务执行完成以后才执行该任务。
+```
+gulp.task('mytask', ['array', 'of', 'task', 'names'], function() {
+  // Do stuff
+});
+```
+如果只是想执行一些任务列表，可以省略fn参数。
+```
+gulp.task('build', ['array', 'of', 'task', 'names']);
+```
+这里的任务会并行执行，并不是按照数组的先后顺序来执行。 
+
+### gulp.watch 
 
 
 
