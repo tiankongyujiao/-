@@ -105,7 +105,8 @@ gulp.task('build', ['array', 'of', 'task', 'names']);
 ```
 gulp.watch(glob[, opts, cb]);
 ```
-glob: 类型： String或者Array。
+glob: 类型： String或者Array。监听的文件或者文件列表的匹配模式。
+
 
 
 
