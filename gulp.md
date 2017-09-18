@@ -71,7 +71,7 @@ gulp.src('client/js/**/*.js', { base: 'client' })
 ```
 gulp.dest(path[,options]);
 ```
-path为写入文件的路径。  
+path为写入文件的路径。可以将它 pipe 到多个文件夹。如果某文件夹不存在，将会自动创建它。
 options为一个可选的参数对象，可以有以下属性： 
 option.cwd： 类型： String 默认值： process.cwd()。输出目录的 cwd 参数，只在所给的输出目录是相对路径时候有效。
 options.mode: 类型： String 默认值： 0777。八进制权限字符，用以定义所有在输出目录中所创建的目录的权限。 
@@ -106,6 +106,22 @@ gulp.task('build', ['array', 'of', 'task', 'names']);
 gulp.watch(glob[, opts, cb]);
 ```
 glob: 类型： String或者Array。监听的文件或者文件列表的匹配模式。
+cb: 回调函数，当监控的文件内容有变化时触发。该函数有一个参数，是一个event对象，该对象描述了文件的变化，有以下属性：
+1. event.type: 文件发生变化的类型：added,changed,deleted,renamed.
+2. event.path: 发生变化的文件的路径。
+
+```
+gulp.watch(glob[, opts], tasks)
+```
+glob和opts同gulp.watch(glob[, opts, cb]);里的参数。  
+tasks是一个数组，表示需要在文件变动后执行的一个或者多个通过 gulp.task() 创建的 task 的名字。
+
+```
+var watcher = gulp.watch('js/**/*.js', ['uglify','reload']);
+watcher.on('change', function(event) {
+  console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+});
+```
 
 
 
