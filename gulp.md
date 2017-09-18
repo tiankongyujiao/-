@@ -102,7 +102,10 @@ gulp.task('build', ['array', 'of', 'task', 'names']);
 这里的任务会并行执行，并不是按照数组的先后顺序来执行。 
 
 ### gulp.watch 
-
+```
+gulp.watch(glob[, opts, cb]);
+```
+glob: 类型： String或者Array。
 
 
 
