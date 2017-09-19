@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>zjtest index</title>
+    <meta name="keywords" content="途牛旅游网" />
+    <meta name="description" content="途牛旅游网" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="width" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-retina.png">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="../../zjtest/src/css/index.css"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <script>
+    (function() {
+        function refreshRem() {
+            var width = docEl.getBoundingClientRect().width;
+            rem = width / (BASE_WIDTH / ROOT_FONT_SIZE);
+            docEl.style.fontSize = rem + "px";
+        }
+        var tid = null, docEl = document.documentElement, BASE_WIDTH = 640, ROOT_FONT_SIZE = 100;
+        refreshRem();
+         window.addEventListener("resize", function() {
+            clearTimeout(tid);
+            tid = setTimeout(refreshRem, 300);
+        }, false);
+    })();
+    </script>
+</head>
+<body>
+<div class="wx-share" id="shareArea" style="display:none;">
+    <input type="hidden" id="shareTitle" value="title" /> 
+    <input type="hidden" id="shareDesc" value="description" /> 
+    <input type="hidden" id="shareLink" value="sharelink" /> 
+    <img id="shareImg" src="" /> 
+</div> 
+<div class="wrapper">
+<!--用户代码开发区域-->
+    <div id="zjtest" style="font-size: 0.3rem;">nothing is impossible for a willing heart!</div>
+</div>
+<!--DEV环境-->
+<script type="text/javascript" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/js/lib/jquery-1.10.2_d88366fd.js"></script>
+<script type="text/javascript" src="../../zjtest/src/js/index.js"></script>
+</body>
+</html>
