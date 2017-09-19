@@ -14,7 +14,19 @@ bs.init({
 // 主Browsersync模块出口
 bs.reload("*.html");
 ```
-(1) .create( name )  
+(1) .create( name )  创建Browsersync实例  
+```
+// 创建一个未命名的实例
+var bs = require("browser-sync").create();
+
+// 创建一个命名实例
+var bs = require("browser-sync").create('My server');
+
+
+// 创建多个
+var bs1 = require("browser-sync").create('Server 1');
+var bs2 = require("browser-sync").create('Server 2');
+```
 (2) .get(name)
 ```
 // 在一个文件中创建一个命名实例... 
@@ -41,7 +53,7 @@ browserSync.init({
         baseDir:"./",
           index: index.html"
     },
-    open:true
+    open:false // 决定Browsersync启动时自动打开的网址,默认为本地
 });
 ```
 cb回调函数。  
