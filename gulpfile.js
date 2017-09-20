@@ -166,7 +166,7 @@ gulp.task('watch',function(){
 })
 
 //js合并
-//eg. gulp ccscript -s common/eco/lib/ecojs/eco.js,common/eco/config/ecoConfig.js,common/eco/systems/mob/mob.js -d common/eco/systems/mob/package_ecoConfigMob.js 支持文件
+//eg. gulp ccscript -s zjtest/src/js/index.js,zjtest/src/js/index2.js -d zjtest/src/js/index.min.js 支持文件
 gulp.task('ccscript', function() {
     var sourceUrl = argv.s;
     var dest = argv.d;
