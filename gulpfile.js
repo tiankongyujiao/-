@@ -70,7 +70,7 @@ gulp.task('compcss',function(){
 		.pipe(notify({message:'styles task complete'}));
 });
 
-//压缩js
+//压缩js 
 //eg1. gulp compjs -p zjtest
 gulp.task('compjs',function(){
 	var projectName = argv.p;
