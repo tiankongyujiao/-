@@ -21,8 +21,8 @@ module.exports = {
 };
 ```
 **loader**: webpack把.html,.css,.scss,.jpeg等文件都看成是模块，webpack本身只能解析js，loader就是解析这些模块，使其能够被添加到依赖图里面，并最终在打包文件bundle文件里面。简单说，loader就是为了解析.html,.css,.scss,.jpeg...文件。
-loader在配置文件中的两个作用：
-（1）标志哪个文件或者哪些文件需要使用特定的loader解析。
+loader在配置文件中的两个作用：  
+（1）标志哪个文件或者哪些文件需要使用特定的loader解析。  
 （2）解析.html,.css,.scss,.jpeg...文件，使其能够被添加到依赖图里面，并最终在打包文件bundle文件里面
 
 ```
@@ -36,7 +36,10 @@ const config = {
   },
   module: {
     rules: [
-      { test: /\.txt$/, use: 'raw-loader' }
+      { 
+          test: /\.txt$/, 
+          use: 'raw-loader' 
+      }
     ]
   }
 };
