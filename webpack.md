@@ -1,8 +1,8 @@
 # webpack
 #### webpack概念
-webpack是现代js的打包工具，当你的项目使用webpack的时候，它会递归的构建一个依赖树，这个依赖树包含了你的应用程序所需要的所有的模块，这些模块会被打包成少数的几个bundles文件，通常只有一个，在需要引用的地方只需要引用这一个打包的文件即可。  
+webpack 是一个现代 JavaScript 应用程序的模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成少量的 bundle - 通常只有一个，由浏览器加载。在需要引用的地方只需要引用这一个打包的文件即可。  
 它的配置文件是很复杂的，但是基本的使用只需要理解四个配置参数：entry, output, loaders, 和 plugins：  
-**entry**：告诉webpack项目开始的地方（项目），然后根据依赖图得知要打包什么。 （contextual root or the first file to kick off your app）
+**entry**：告诉webpack项目开始的地方（项目），然后根据依赖关系图得知要打包什么。 （contextual root or the first file to kick off your app）
 ```
 module.exports = {
   entry: './path/to/my/entry/file.js'
