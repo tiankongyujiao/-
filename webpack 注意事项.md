@@ -11,3 +11,14 @@
   ]
 }
 ```
+或者使用：
+```
+{
+  test: /\.(png|svg|jpeg|jpg|gif)$/,
+  use: [
+    {
+      loader:'file-loader'
+    }
+  ]
+}
+```
