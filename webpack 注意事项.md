@@ -90,3 +90,26 @@ module.exports = {
 (1) jquery,vue分别打包到一个独立的chunk中，分别为common1.js,common2.js;  
 (2) 同时把main1,main的公共业务模块打包到chunk.js中;  
 (3) 而其他非公共的业务代码全部保留在main.js和main1.js中。  
+
+```
+var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
+module.exports = {
+    entry: {
+        main: process.cwd()+'/example6/main.js',
+        main1: process.cwd()+'/example6/main1.js',
+        jquery:["jquery"]
+    },
+    output: {
+        path: process.cwd()  + '/dest/example6',
+        filename: '[name].js'
+    },
+    plugins: [
+        new CommonsChunkPlugin({
+            name: "jquery",
+            minChunks:2,
+            chunks:["main","main1"]
+        })
+    ]
+};
+```
+上面的配置表示：只有在main.js和main1.js中都引用的模块才会被打包的到公共模块（这里即jquery.js） 
