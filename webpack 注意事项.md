@@ -63,3 +63,30 @@ require.ensure(dependencies: String[], callback: function(require), chunkName: S
 
 chunk名称 chunkName  
 chunkName 是提供给这个特定的 require.ensure() 的 chunk 的名称。通过提供 require.ensure() 不同执行点相同的名称，我们可以保证所有的依赖都会一起放进相同的 文件束(bundle)。
+
+### CommonsChunkPlugin
+```
+var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
+module.exports = {
+    entry: {
+        main: process.cwd()+'/example3/main.js',
+        main1: process.cwd()+'/example3/main1.js',
+        common1:["jquery"],
+        common2:["vue"]
+    },
+    output: {
+        path: process.cwd()+'/dest/example3',
+        filename: '[name].js'
+    },
+    plugins: [
+        new CommonsChunkPlugin({
+            name: ["chunk",'common1','common2'],//对应于上面的entry的key
+            minChunks:2
+        })
+    ]
+};
+```
+上面的配置就可以把:  
+(1) jquery,vue分别打包到一个独立的chunk中，分别为common1.js,common2.js;  
+(2) 同时把main1,main的公共业务模块打包到chunk.js中;  
+(3) 而其他非公共的业务代码全部保留在main.js和main1.js中。  
