@@ -128,7 +128,8 @@ http://«host»:«port»/webpack-dev-server/«path»
 inline模式下我们访问的URL不用发生变化,启用这种模式分两种情况:    
 a.  当以命令行启动webpack-dev-server时：  
     在命令行中添加--inline命令  
-    或者在webpack.config.js中添加devServer:{inline:true}  
+    或者在webpack.config.js中添加devServer:{inline:true}    
+    
 b.  当以Node.js API启动webpack-dev-server时  
     由于**webpack-dev-server的配置中无inline选项**,我们需要添加webpack-dev-server/client?http://«path»:«port»/到webpack配置的entry入口点中.  
     将<script src="http://localhost:8080/webpack-dev-server.js"></script>添加到html文件中  
