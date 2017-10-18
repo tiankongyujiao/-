@@ -118,12 +118,15 @@ module.exports = {
 webpack-dev-server支持两种方式来刷新页面：    
 （1）iframe模式（页面放在iframe中，当发生改变时重载）    
 （2）inline模式 (将webpack-dev-sever的客户端入口添加到包(bundle)中)    
-我们经常使用的是第二种。  
-两种模式都支持热模块替换(Hot Module Replacement).**热模块替换的好处是只替换更新的部分,而不是页面重载.**
-**iframe模式**
+我们经常使用的是第二种。    
+两种模式都支持热模块替换(Hot Module Replacement).**热模块替换的好处是只替换更新的部分,而不是页面重载.**  
+**iframe模式**  
 使用这种模式不需要额外的配置,只需要以下面这种URL格式访问即可  
 http://«host»:«port»/webpack-dev-server/«path»  
-例如:http://localhost:8080/webpack-dev-server/index.html  
+例如:http://localhost:8080/webpack-dev-server/index.html  
+或者  
+http://«host»:«port»/«path»  
+例如:http://localhost:8080/index.html  
 **inline模式**
 inline模式下我们访问的URL不用发生变化,启用这种模式分两种情况:    
 a.  当以命令行启动webpack-dev-server时：  
