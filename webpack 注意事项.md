@@ -124,9 +124,7 @@ webpack-dev-server支持两种方式来刷新页面：
 使用这种模式不需要额外的配置,只需要以下面这种URL格式访问即可  
 http://«host»:«port»/webpack-dev-server/«path»  
 例如:http://localhost:8080/webpack-dev-server/index.html  
-或者  
-http://«host»:«port»/«path»  
-例如:http://localhost:8080/index.html  
+
 **inline模式**
 inline模式下我们访问的URL不用发生变化,启用这种模式分两种情况:    
 a.  当以命令行启动webpack-dev-server时：  
