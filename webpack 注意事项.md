@@ -113,3 +113,40 @@ module.exports = {
 };
 ```
 上面的配置表示：只有在main.js和main1.js中都引用的模块才会被打包的到公共模块（这里即jquery.js） 
+
+### webpack-dev-server
+webpack-dev-server支持两种方式来刷新页面：  
+（1）iframe模式（页面放在iframe中，当发生改变时重载）  
+（2）inline模式 (将webpack-dev-sever的客户端入口添加到包(bundle)中)  
+我们经常使用的是第二种。  
+两种模式都支持热模块替换(Hot Module Replacement).**热模块替换的好处是只替换更新的部分,而不是页面重载.**
+**iframe模式**
+使用这种模式不需要额外的配置,只需要以下面这种URL格式访问即可
+http://«host»:«port»/webpack-dev-server/«path»
+例如:http://localhost:8080/webpack-dev-server/index.html
+**inline模式**
+inline模式下我们访问的URL不用发生变化,启用这种模式分两种情况:  
+a.  当以命令行启动webpack-dev-server时：
+    在命令行中添加--inline命令
+    或者在webpack.config.js中添加devServer:{inline:true}
+b.  当以Node.js API启动webpack-dev-server时
+    由于**webpack-dev-server的配置中无inline选项**,我们需要添加webpack-dev-server/client?http://«path»:«port»/到webpack配置的entry入口点中.
+    将<script src="http://localhost:8080/webpack-dev-server.js"></script>添加到html文件中
+```
+var config = require("./webpack.config.js");
+var webpack = require('webpack');
+var WebpackDevServer = require('webpack-dev-server');
+
+config.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/");
+var compiler = webpack(config);
+var server = new WebpackDevServer(compiler, {
+    contentBase:'build/',
+    publicPath: "/assets/"
+});
+server.listen(8080);
+```
+在Node中运行上面的代码即可。
+
+注意：**webpack配置中的devSever配置项只对在命令行模式有效。**
+
+
