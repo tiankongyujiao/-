@@ -129,11 +129,28 @@ http://«host»:«port»/webpack-dev-server/«path»
 inline模式下我们访问的URL不用发生变化,启用这种模式分两种情况:    
 a.  当以命令行启动webpack-dev-server时：  
     在命令行中添加--inline命令  
-    或者在webpack.config.js中添加devServer:{inline:true}    
+    或者在webpack.config.js中添加devServer:{inline:true}     
     
+    当刷新页面的时候，一个小型的客户端被添加到webpack.config.js的入口文件中  
+    例如在我们的例子中，在使用inline mode的热替换后，相当于入口文件从  
+```
+entry:{
+    app:path.join(__dirname,'src','index.js')
+}
+```
+变成了：
+```
+entry:{
+    app:[path.join(__dirname,'src','index.js'),
+             'webpack-dev-server/client?http://localhost:8080/'
+          ]
+}
+```
+从一个入口变成了两个入口，并实现刷新  
+
 b.  当以Node.js API启动webpack-dev-server时  
-    由于**webpack-dev-server的配置中无inline选项**,我们需要添加webpack-dev-server/client?http://«path»:«port»/到webpack配置的entry入口点中.  
-    将<script src="http://localhost:8080/webpack-dev-server.js"></script>添加到html文件中  
+    由于**webpack-dev-server的配置中无inline选项**,我们需要添加webpack-dev-server/client?http://«path»:«port»/到webpack配置的entry入口点中. 
+    将<script src="http://localhost:8080/webpack-dev-server.js"></script>添加到html文件中   
 ```
 var config = require("./webpack.config.js");
 var webpack = require('webpack');
