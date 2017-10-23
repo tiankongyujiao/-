@@ -22,5 +22,5 @@ webpack与gulp对比：
     ```
     参数分析->编译入口->编译—>处理依赖->输出
     ```
-    ![image](https://github.com/872822645/danxuankuangDemo/blob/master/1.jpg)
+    ![image](https://github.com/tiankongyujiao/webpack-gulp/blob/master/webpack.png)
     webpack核心使用了**Tapable**实现事件的发布订阅处理的插件架构，对于固有生周期的每一个环节，都会抛出对应的事件提供插件切入，这是一种面向切面的思想
